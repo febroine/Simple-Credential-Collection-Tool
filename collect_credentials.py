@@ -20,7 +20,7 @@ def collect_credentials(directory):
                 
                 if url and username and password:
                     credentials.append({
-                        'Dosya_Adi': os.path.relpath(root, directory),
+                        'File_Name': os.path.relpath(root, directory),
                         'URL': url,
                         'Username': username,
                         'Password': password
@@ -29,14 +29,14 @@ def collect_credentials(directory):
     return credentials
 
 def main():
-    directory = input("Lütfen dizinin yolunu girin: ")
+    directory = input("Please enter the directory path: ")
     credentials = collect_credentials(directory)
 
-    output_file = os.path.join(os.getcwd(), 'bilgiler.json')
+    output_file = os.path.join(os.getcwd(), 'credentials.json')
     with open(output_file, 'w', encoding='utf-8') as json_file:
         json.dump(credentials, json_file, indent=2, ensure_ascii=False)
 
-    print(f"Bilgiler {output_file} dosyasına yazıldı.")
+    print(f"Information has been written to {output_file}.")
 
 if __name__ == "__main__":
     main()
